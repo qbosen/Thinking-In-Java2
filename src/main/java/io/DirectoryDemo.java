@@ -1,26 +1,31 @@
 //: io/DirectoryDemo.java
 package io; /* Added by Eclipse.py */
 // Sample use of Directory utilities.
-import java.io.*;
-import net.mindview.util.*;
-import static net.mindview.util.Print.*;
+
+import net.mindview.util.Directory;
+import net.mindview.util.PPrint;
+
+import java.io.File;
+
+import static net.mindview.util.Print.print;
 
 public class DirectoryDemo {
-  public static void main(String[] args) {
-    // All directories:
-    PPrint.pprint(Directory.walk(".").dirs);
-    // All files beginning with 'T'
-    for(File file : Directory.local(".", "T.*"))
-      print(file);
-    print("----------------------");
-    // All Java files beginning with 'T':
-    for(File file : Directory.walk(".", "T.*\\.java"))
-      print(file);
-    print("======================");
-    // Class files containing "Z" or "z":
-    for(File file : Directory.walk(".",".*[Zz].*\\.class"))
-      print(file);
-  }
+    public static void main(String[] args) {
+        // All directories:
+        String start = "src/main/java/io";
+        PPrint.pprint(Directory.walk(start).dirs);
+        // All files beginning with 'T'
+        for (File file : Directory.local(start, "T.*"))
+            print(file);
+        print("----------------------");
+        // All Java files beginning with 'T':
+        for (File file : Directory.walk(start, "T.*\\.java"))
+            print(file);
+        print("======================");
+        // Java files containing "Z" or "z":
+        for (File file : Directory.walk(start, ".*[Zz].*\\.java"))
+            print(file);
+    }
 } /* Output: (Sample)
 [.\xfiles]
 .\TestEOF.class
