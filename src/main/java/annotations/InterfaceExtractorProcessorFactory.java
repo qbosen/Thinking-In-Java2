@@ -1,3 +1,4 @@
+/*
 //: annotations/InterfaceExtractorProcessorFactory.java
 // APT-based annotation processing.
 package annotations;
@@ -20,3 +21,4 @@ public class InterfaceExtractorProcessorFactory
     return Collections.emptySet();
   }
 } ///:~
+*/

@@ -1,3 +1,4 @@
+/*
 //: annotations/InterfaceExtractorProcessor.java
 // APT-based annotation processing.
 // {Exec: apt -factory
@@ -58,3 +59,4 @@ public class InterfaceExtractorProcessor
     }
   }
 } ///:~
+*/

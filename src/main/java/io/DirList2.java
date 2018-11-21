@@ -2,6 +2,10 @@
 package io; /* Added by Eclipse.py */
 // Uses anonymous inner classes.
 // {Args: "D.*\.java"}
+
+import custom.Utils;
+import org.junit.Test;
+
 import java.util.regex.*;
 import java.io.*;
 import java.util.*;
@@ -27,6 +31,13 @@ public class DirList2 {
     for(String dirItem : list)
       System.out.println(dirItem);
   }
+
+    @Test
+    public void testFilter() {
+        DirList.main(Utils.toArr(new String[]{}));
+        System.out.println("--- filter: contains 'git' ---");
+        DirList.main(Utils.toArr(".*?git.*"));
+    }
 } /* Output:
 DirectoryDemo.java
 DirList.java
