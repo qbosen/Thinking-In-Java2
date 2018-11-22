@@ -37,6 +37,7 @@ public class BufferedInputFile {
         int i;
         while ((i = fileReader.read()) != -1)
             stringBuilder.append(((char) i));
+        fileReader.close();
         System.out.println(stringBuilder);
     }
 
@@ -48,7 +49,7 @@ public class BufferedInputFile {
         int size;
         while ((size = fileReader.read(buff)) != -1)
             stringBuilder.append(buff, 0, size);
-
+        fileReader.close();
         System.out.println(stringBuilder);
     }
 } /* (Execute to see output) *///:~
