@@ -17,7 +17,7 @@ public class Utils {
 
 
     public static String relativeFilePath(Class clazz, String ext) {
-        return String.format("src/main/java/%s/%s.%s", clazz.getPackage().getName(), clazz.getSimpleName(), ext);
+        return String.format("src/main/java/%s/%s.%s", clazz.getPackage().getName().replaceAll("\\.", "/"), clazz.getSimpleName(), ext);
     }
 
     @Test
