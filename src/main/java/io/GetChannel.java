@@ -75,7 +75,7 @@ public class GetChannel {
     }
 
     private void print(ByteBuffer buffer) {
-        System.out.println(String.format("pos:%d\tlimit:%d\n", buffer.position(), buffer.limit()));
+        System.out.println(String.format("pos:%d\tlimit:%d\tcapacity:%d\n", buffer.position(), buffer.limit(), buffer.capacity()));
     }
 } /* Output:
 Some text Some more
