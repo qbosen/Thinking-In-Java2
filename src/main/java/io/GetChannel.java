@@ -41,9 +41,19 @@ public class GetChannel {
         ByteBuffer buffer = ByteBuffer.allocate(1024);
         channel.read(buffer);
 
-        System.out.println(buffer.position());
+        print(buffer);
+        int mark = buffer.position();
+        System.out.println("rewind: 重置pos");
+        buffer.rewind();
+        print(buffer);
+
+        System.out.println("reset: 重置pos -> mark");
+        buffer.position(mark);
+        print(buffer);
+
+        System.out.println("flip: 重置pos limit");
         buffer.flip();
-        System.out.println(buffer.position());
+        print(buffer);
 
         System.out.println("无法读取中文部分");
         while (buffer.hasRemaining()) {
@@ -62,6 +72,10 @@ public class GetChannel {
         while ((line = bufferedReader.readLine()) != null) {
             System.out.println(line);
         }
+    }
+
+    private void print(ByteBuffer buffer) {
+        System.out.println(String.format("pos:%d\tlimit:%d\n", buffer.position(), buffer.limit()));
     }
 } /* Output:
 Some text Some more
