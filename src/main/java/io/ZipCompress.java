@@ -4,6 +4,9 @@ package io; /* Added by Eclipse.py */
 // number of files given on the command line.
 // {Args: ZipCompress.java}
 
+import custom.Utils;
+import org.junit.Test;
+
 import java.io.*;
 import java.util.Enumeration;
 import java.util.zip.*;
@@ -62,4 +65,10 @@ public class ZipCompress {
         }
         /* if(args.length == 1) */
     }
+
+    @Test
+    public void testOneFile() throws IOException {
+        main(Utils.toArr(Utils.relativeFilePath(ZipCompress.class)));
+    }
+
 } /* (Execute to see output) *///:~

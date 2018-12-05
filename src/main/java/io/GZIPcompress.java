@@ -2,6 +2,9 @@
 package io; /* Added by Eclipse.py */
 // {Args: GZIPcompress.java}
 
+import custom.Utils;
+import org.junit.Test;
+
 import java.io.*;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
@@ -34,5 +37,10 @@ public class GZIPcompress {
         String s;
         while ((s = in2.readLine()) != null)
             System.out.println(s);
+    }
+
+    @Test
+    public void test() throws IOException {
+        main(Utils.toArr(Utils.relativeFilePath(getClass())));
     }
 } /* (Execute to see output) *///:~
