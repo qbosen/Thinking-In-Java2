@@ -50,17 +50,20 @@ public class Worm implements Serializable {
         out.writeObject("Worm storage\n");
         out.writeObject(w);
         out.close(); // Also flushes output
+
         ObjectInputStream in = new ObjectInputStream(
                 new FileInputStream("worm.out"));
         String s = (String) in.readObject();
         Worm w2 = (Worm) in.readObject();
         print(s + "w2 = " + w2);
+
         ByteArrayOutputStream bout =
                 new ByteArrayOutputStream();
         ObjectOutputStream out2 = new ObjectOutputStream(bout);
         out2.writeObject("Worm storage\n");
         out2.writeObject(w);
         out2.flush();
+        // out2 的操作对 bout可见
         ObjectInputStream in2 = new ObjectInputStream(
                 new ByteArrayInputStream(bout.toByteArray()));
         s = (String) in2.readObject();
@@ -76,7 +79,7 @@ public class Worm implements Serializable {
             result.append(dat);
         result.append(")");
         if (next != null)
-            result.append(next);
+            result.append(next);    // 这个递归厉害了!
         return result.toString();
     }
 } /* Output:
