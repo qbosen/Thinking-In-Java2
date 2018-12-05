@@ -1,9 +1,6 @@
 //: io/UsingRandomAccessFile.java
 package io; /* Added by Eclipse.py */
 
-import org.junit.Test;
-
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 

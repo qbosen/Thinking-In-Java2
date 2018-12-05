@@ -2,7 +2,8 @@
 package io; /* Added by Eclipse.py */
 // Manipulating ints in a ByteBuffer with an IntBuffer
 
-import java.nio.*;
+import java.nio.ByteBuffer;
+import java.nio.IntBuffer;
 
 public class IntBufferDemo {
     private static final int BSIZE = 1024;

@@ -1,9 +1,10 @@
 //: io/UsingBuffers.java
 package io; /* Added by Eclipse.py */
 
-import java.nio.*;
+import java.nio.ByteBuffer;
+import java.nio.CharBuffer;
 
-import static net.mindview.util.Print.*;
+import static net.mindview.util.Print.print;
 
 public class UsingBuffers {
     private static void symmetricScramble(CharBuffer buffer) {

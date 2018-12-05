@@ -3,9 +3,12 @@ package io; /* Added by Eclipse.py */
 // Locking portions of a mapped file.
 // {RunByHand}
 
-import java.nio.*;
-import java.nio.channels.*;
-import java.io.*;
+import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.nio.ByteBuffer;
+import java.nio.MappedByteBuffer;
+import java.nio.channels.FileChannel;
+import java.nio.channels.FileLock;
 
 public class LockingMappedFiles {
     static final int LENGTH = 0x8FFFFFF; // 128 MB

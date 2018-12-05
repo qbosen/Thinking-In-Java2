@@ -1,9 +1,9 @@
 //: io/MappedIO.java
 package io; /* Added by Eclipse.py */
 
-import java.nio.*;
-import java.nio.channels.*;
 import java.io.*;
+import java.nio.IntBuffer;
+import java.nio.channels.FileChannel;
 
 public class MappedIO {
     private static int numOfInts = 4000000;

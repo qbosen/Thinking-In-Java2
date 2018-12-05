@@ -3,7 +3,8 @@
 // and send the output to the console.
 package net.mindview.util;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 public class OSExecute {
     public static void command(String command) {

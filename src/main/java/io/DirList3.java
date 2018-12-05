@@ -6,34 +6,36 @@ package io; /* Added by Eclipse.py */
 import custom.Utils;
 import org.junit.Test;
 
-import java.util.regex.*;
-import java.io.*;
-import java.util.*;
+import java.io.File;
+import java.io.FilenameFilter;
+import java.util.Arrays;
+import java.util.regex.Pattern;
 
 public class DirList3 {
-  public static void main(final String[] args) {
-    File path = new File(".");
-    String[] list;
-    if(args.length == 0)
-      list = path.list();
-    else
-      list = path.list(new FilenameFilter() {
-        private Pattern pattern = Pattern.compile(args[0]);
-        public boolean accept(File dir, String name) {
-          return pattern.matcher(name).matches();
-        }
-      });
-    Arrays.sort(list, String.CASE_INSENSITIVE_ORDER);
-    for(String dirItem : list)
-      System.out.println(dirItem);
-  }
+    public static void main(final String[] args) {
+        File path = new File(".");
+        String[] list;
+        if (args.length == 0)
+            list = path.list();
+        else
+            list = path.list(new FilenameFilter() {
+                private Pattern pattern = Pattern.compile(args[0]);
 
-  @Test
-  public void testFilter() {
-    DirList.main(Utils.toArr(new String[]{}));
-    System.out.println("--- filter: contains 'git' ---");
-    DirList.main(Utils.toArr(".*?git.*"));
-  }
+                public boolean accept(File dir, String name) {
+                    return pattern.matcher(name).matches();
+                }
+            });
+        Arrays.sort(list, String.CASE_INSENSITIVE_ORDER);
+        for (String dirItem : list)
+            System.out.println(dirItem);
+    }
+
+    @Test
+    public void testFilter() {
+        DirList.main(Utils.toArr(new String[]{}));
+        System.out.println("--- filter: contains 'git' ---");
+        DirList.main(Utils.toArr(".*?git.*"));
+    }
 } /* Output:
 DirectoryDemo.java
 DirList.java

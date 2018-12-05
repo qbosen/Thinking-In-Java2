@@ -2,9 +2,9 @@
 package net.mindview.util;
 
 import custom.Utils;
-import org.junit.Test;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 
 public class ProcessFiles {
     private Strategy strategy;
@@ -58,7 +58,6 @@ public class ProcessFiles {
     public interface Strategy {
         void process(File file);
     }
-
 
 
 } /* (Execute to see output) *///:~

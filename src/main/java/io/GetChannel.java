@@ -4,9 +4,9 @@ package io; /* Added by Eclipse.py */
 
 import org.junit.Test;
 
-import java.nio.*;
-import java.nio.channels.*;
 import java.io.*;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
 
 public class GetChannel {
     private static final int BSIZE = 1024;

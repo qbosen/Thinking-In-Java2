@@ -2,9 +2,10 @@
 package io; /* Added by Eclipse.py */
 // Getting different representations from a ByteBuffer
 
-import java.nio.*;
+import java.nio.ByteBuffer;
 
-import static net.mindview.util.Print.*;
+import static net.mindview.util.Print.print;
+import static net.mindview.util.Print.printnb;
 
 public class GetData {
     private static final int BSIZE = 1024;

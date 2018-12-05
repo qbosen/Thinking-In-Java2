@@ -3,7 +3,8 @@ package io; /* Added by Eclipse.py */
 
 import java.nio.*;
 
-import static net.mindview.util.Print.*;
+import static net.mindview.util.Print.print;
+import static net.mindview.util.Print.printnb;
 
 public class ViewBuffers {
     public static void main(String[] args) {

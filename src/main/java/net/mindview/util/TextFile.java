@@ -6,7 +6,9 @@ package net.mindview.util;
 import custom.Utils;
 
 import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.TreeSet;
 
 public class TextFile extends ArrayList<String> {
     // Read a file, split by any regular expression:

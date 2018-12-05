@@ -3,11 +3,12 @@ package io; /* Added by Eclipse.py */
 // Creating a very large file using mapping.
 // {RunByHand}
 
-import java.nio.*;
-import java.nio.channels.*;
-import java.io.*;
+import java.io.RandomAccessFile;
+import java.nio.MappedByteBuffer;
+import java.nio.channels.FileChannel;
 
-import static net.mindview.util.Print.*;
+import static net.mindview.util.Print.print;
+import static net.mindview.util.Print.printnb;
 
 public class LargeMappedFiles {
     // 2^27 = 2^7M = 128M
