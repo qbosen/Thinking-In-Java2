@@ -5,6 +5,7 @@ package io; /* Added by Eclipse.py */
 
 import java.io.*;
 
+@SuppressWarnings("Duplicates")
 public class SerialCtl implements Serializable {
     private String a;
     private transient String b;

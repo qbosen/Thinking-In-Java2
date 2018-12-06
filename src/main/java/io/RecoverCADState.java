@@ -5,6 +5,7 @@ package io; /* Added by Eclipse.py */
 
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
+import java.lang.reflect.Field;
 import java.util.List;
 
 public class RecoverCADState {
@@ -13,6 +14,14 @@ public class RecoverCADState {
         ObjectInputStream in = new ObjectInputStream(
                 new FileInputStream("CADState.out"));
         // Read in the same order they were written:
+
+        // static 变量在反序列化的时候，读取的是jvm中class的static变量值。
+        // 和序列化的时候 static 变量值无关。
+        // 通过改变当前jvm中 static 变量的值 可以观察到这一点。
+        Field circleColor = Circle.class.getDeclaredField("color");
+        circleColor.setAccessible(true);
+        circleColor.set(null, 4);
+
         List<Class<? extends Shape>> shapeTypes =
                 (List<Class<? extends Shape>>) in.readObject();
         Line.deserializeStaticState(in);

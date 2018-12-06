@@ -25,6 +25,7 @@ class Animal implements Serializable {
     }
 }
 
+@SuppressWarnings("Duplicates")
 public class MyWorld {
     public static void main(String[] args)
             throws IOException, ClassNotFoundException {

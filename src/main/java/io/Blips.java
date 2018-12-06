@@ -59,6 +59,7 @@ public class Blips {
 //! print("Recovering b2:");
 //! b2 = (Blip2)in.readObject();
     }
+    // 注意下面的output recovering 的时候 构造器被调用了 然后是readExternal
 } /* Output:
 Constructing objects:
 Blip1 Constructor
