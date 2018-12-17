@@ -1,4 +1,4 @@
-package enumerated.bitflag;
+package enumerated.custom;
 
 import org.junit.Test;
 
@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static enumerated.bitflag.FilePermissionDemo.Permission.*;
+import static enumerated.custom.FilePermissionDemo.Permission.*;
 
 /**
  * @author qiubaisen
@@ -34,7 +34,6 @@ public class FilePermissionDemo {
 
         public void processCMD(String authCmd) {
             String regex = "([ugoa]?)([+-=])([rwx]*)";
-
 
             Matcher matcher = Pattern.compile(regex, Pattern.CASE_INSENSITIVE).matcher(authCmd);
             if (!matcher.matches()) {
