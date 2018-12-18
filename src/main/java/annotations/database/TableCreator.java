@@ -3,6 +3,9 @@
 // {Args: annotations.database.Member}
 package annotations.database;
 
+import custom.Utils;
+import org.junit.Test;
+
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -64,6 +67,11 @@ public class TableCreator {
                         className + " is :\n" + tableCreate);
             }
         }
+    }
+
+    @Test
+    public void test() throws Exception {
+        main(Utils.toArr(Member.class.getName()));
     }
 
     private static String getConstraints(Constraints con) {
