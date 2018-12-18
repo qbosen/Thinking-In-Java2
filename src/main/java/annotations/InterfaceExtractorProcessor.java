@@ -12,22 +12,23 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+/**
+ * 需要使用java 1.7 版本
+ */
 public class InterfaceExtractorProcessor
         implements AnnotationProcessor {
     private final AnnotationProcessorEnvironment env;
     private ArrayList<MethodDeclaration> interfaceMethods =
             new ArrayList<MethodDeclaration>();
 
-    public InterfaceExtractorProcessor(
-            AnnotationProcessorEnvironment env) {
+    public InterfaceExtractorProcessor(AnnotationProcessorEnvironment env) {
         this.env = env;
     }
 
+    @Override
     public void process() {
-        for (TypeDeclaration typeDecl :
-                env.getSpecifiedTypeDeclarations()) {
-            ExtractInterface annot =
-                    typeDecl.getAnnotation(ExtractInterface.class);
+        for (TypeDeclaration typeDecl : env.getSpecifiedTypeDeclarations()) {
+            ExtractInterface annot = typeDecl.getAnnotation(ExtractInterface.class);
             if (annot == null)
                 break;
             for (MethodDeclaration m : typeDecl.getMethods())
