@@ -7,6 +7,10 @@ import java.util.concurrent.Executors;
 
 public class SimplePriorities implements Runnable {
     private int countDown = 5;
+    /**
+     * 这里 数学运算足够复杂，时间足够长，jvm尽量不优化的情况下
+     * 能看到 优先级 的调度机制
+     */
     private volatile double d; // No optimization
     private int priority;
 
