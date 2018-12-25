@@ -7,6 +7,7 @@ import java.util.concurrent.ThreadFactory;
 
 class ExceptionThread2 implements Runnable {
     public void run() {
+        System.out.println(">>>>>>RUNNABLE RUN");
         Thread t = Thread.currentThread();
         System.out.println("run() by " + t);
         System.out.println(
@@ -17,29 +18,33 @@ class ExceptionThread2 implements Runnable {
 
 class MyUncaughtExceptionHandler implements
         Thread.UncaughtExceptionHandler {
+    @Override
     public void uncaughtException(Thread t, Throwable e) {
-        System.out.println("caught " + e);
+        System.out.println("[[[[[caught " + e);
     }
 }
 
 class HandlerThreadFactory implements ThreadFactory {
     public Thread newThread(Runnable r) {
+        System.out.println("//////// Factory create thread:");
         System.out.println(this + " creating new Thread");
         Thread t = new Thread(r);
         System.out.println("created " + t);
-        t.setUncaughtExceptionHandler(
-                new MyUncaughtExceptionHandler());
-        System.out.println(
-                "eh = " + t.getUncaughtExceptionHandler());
+        t.setUncaughtExceptionHandler(new MyUncaughtExceptionHandler());
+        System.out.println("eh = " + t.getUncaughtExceptionHandler());
         return t;
     }
 }
 
 public class CaptureUncaughtException {
     public static void main(String[] args) {
-        ExecutorService exec = Executors.newCachedThreadPool(
-                new HandlerThreadFactory());
+        System.out.println("0. CREATE EXEC");
+        ExecutorService exec = Executors.newCachedThreadPool(new HandlerThreadFactory());
+        System.out.println("1. EXECUTE");
         exec.execute(new ExceptionThread2());
+        exec.execute(new ExceptionThread2());
+        System.out.println("2. MAIN END");
+        // pool 还会继续等待60s
     }
 } /* Output: (90% match)
 HandlerThreadFactory@de6ced creating new Thread

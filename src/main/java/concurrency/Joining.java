@@ -17,6 +17,8 @@ class Sleeper extends Thread {
         try {
             sleep(duration);
         } catch (InterruptedException e) {
+            // 当异常被捕捉到的时候 终端标志会被清理掉
+            // 所以此处总是 false
             print(getName() + " was interrupted. " +
                     "isInterrupted(): " + isInterrupted());
             return;
