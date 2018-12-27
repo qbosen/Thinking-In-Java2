@@ -7,4 +7,8 @@ public class SerialNumberGenerator {
     public static int nextSerialNumber() {
         return serialNumber++; // Not thread-safe
     }
+/*
+public synchronized static int nextSerialNumber() {
+        return serialNumber++; // Not thread-safe
+    }*/
 } ///:~

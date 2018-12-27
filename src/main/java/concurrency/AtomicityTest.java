@@ -20,6 +20,7 @@ public class AtomicityTest implements Runnable {
         }
     }
 
+    // 把对i的访问加上 synchronized 即可
     public int getValue() {
         return i;
     }
