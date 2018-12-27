@@ -6,15 +6,30 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 // Synchronize the entire method:
+
+/**
+ * 需要重写 getPair 方法，
+ */
 class ExplicitPairManager1 extends PairManager {
     private Lock lock = new ReentrantLock();
 
-    public synchronized void increment() {
+    @Override
+    public void increment() {
         lock.lock();
         try {
             p.incrementX();
             p.incrementY();
             store(getPair());
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    @Override
+    public Pair getPair() {
+        lock.lock();
+        try {
+            return new Pair(p.getX(), p.getY());
         } finally {
             lock.unlock();
         }
@@ -25,6 +40,7 @@ class ExplicitPairManager1 extends PairManager {
 class ExplicitPairManager2 extends PairManager {
     private Lock lock = new ReentrantLock();
 
+    @Override
     public void increment() {
         Pair temp;
         lock.lock();
@@ -36,6 +52,16 @@ class ExplicitPairManager2 extends PairManager {
             lock.unlock();
         }
         store(temp);
+    }
+
+    @Override
+    public Pair getPair() {
+        lock.lock();
+        try {
+            return new Pair(p.getX(), p.getY());
+        } finally {
+            lock.unlock();
+        }
     }
 }
 
