@@ -3,6 +3,9 @@ package concurrency; /* Added by Eclipse.py */
 // General idiom for interrupting a task.
 // {Args: 1100}
 
+import custom.Utils;
+import org.junit.Test;
+
 import java.util.concurrent.TimeUnit;
 
 import static net.mindview.util.Print.print;
@@ -66,6 +69,16 @@ public class InterruptingIdiom {
         t.start();
         TimeUnit.MILLISECONDS.sleep(new Integer(args[0]));
         t.interrupt();
+    }
+
+    @Test
+    public void test() throws Exception {
+        main(Utils.toArr("1100"));
+    }
+
+    @Test
+    public void test2() throws Exception {
+        main(Utils.toArr("800"));
     }
 } /* Output: (Sample)
 NeedsCleanup 1
