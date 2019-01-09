@@ -65,6 +65,7 @@ class Chef implements Runnable {
                 if (++count == 10) {
                     print("Out of food, closing");
                     restaurant.exec.shutdownNow();
+                    // 当前线程不是一个阻塞状态，所以会知道执行 sleep() 才会发生中断异常
                 }
                 printnb("Order up! ");
                 synchronized (restaurant.waitPerson) {
