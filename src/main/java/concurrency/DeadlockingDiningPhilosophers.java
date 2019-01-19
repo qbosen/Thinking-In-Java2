@@ -3,6 +3,9 @@ package concurrency; /* Added by Eclipse.py */
 // Demonstrates how deadlock can be hidden in a program.
 // {Args: 0 5 timeout}
 
+import custom.Utils;
+import org.junit.Test;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -29,5 +32,27 @@ public class DeadlockingDiningPhilosophers {
             System.in.read();
         }
         exec.shutdownNow();
+    }
+
+    @Test
+    public void normal() {
+        test(20, 5, false);
+    }
+
+    @Test
+    public void dead() {
+        test(0, 5, true);
+    }
+
+
+    private void test(int ponder, int size, boolean timeout) {
+        try {
+            main(Utils.toArr(
+                    String.valueOf(ponder),
+                    String.valueOf(size),
+                    timeout ? "timeout" : ""));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 } /* (Execute to see output) *///:~
