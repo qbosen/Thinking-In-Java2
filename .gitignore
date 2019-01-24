@@ -26,3 +26,4 @@ target
 $*
 src/main/webapp/static/css/**/*.css*
 */*.py
+classes
