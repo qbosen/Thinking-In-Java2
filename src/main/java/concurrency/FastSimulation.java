@@ -2,12 +2,8 @@
 package concurrency; /* Added by Eclipse.py */
 
 import java.util.Random;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
-
-import static net.mindview.util.Print.print;
 
 public class FastSimulation {
     static final int N_ELEMENTS = 100000;
@@ -22,13 +18,36 @@ public class FastSimulation {
         for (int i = 0; i < N_ELEMENTS; i++)
             for (int j = 0; j < N_GENES; j++)
                 GRID[i][j] = new AtomicInteger(rand.nextInt(1000));
-        for (int i = 0; i < N_EVOLVERS; i++)
-            exec.execute(new Evolver());
-        TimeUnit.SECONDS.sleep(5);
+
+        int[] statistics = new int[]{0, 0};
+        Future<int[]>[] futures = new Future[N_EVOLVERS];
+        for (int i = 0; i < N_EVOLVERS; i++) {
+            Future<int[]> submit = exec.submit(new Evolver());
+            futures[i] = submit;
+        }
+
+        TimeUnit.SECONDS.sleep(3);
         exec.shutdownNow();
+
+
+        for (int i = 0; i < N_EVOLVERS; i++) {
+            int[] ints = futures[i].get();
+            statistics[0] += ints[0];
+            statistics[1] += ints[1];
+        }
+
+        System.out.println("success:" + statistics[0] + ", fail:" + statistics[1] + ", fail ratio:" + ((double) statistics[1]) / statistics[0]);
     }
 
-    static class Evolver implements Runnable {
+    static class Evolver implements Callable<int[]> {
+        int success = 0, fail = 0;
+
+        @Override
+        public int[] call() throws Exception {
+            run();
+            return new int[]{success, fail};
+        }
+
         public void run() {
             while (!Thread.interrupted()) {
                 // Randomly select an element to work on:
@@ -48,8 +67,10 @@ public class FastSimulation {
                         // Policy here to deal with failure. Here, we
                         // just report it and ignore it; our model
                         // will eventually deal with it.
-                        print("Old value changed from " + oldvalue);
-                    }
+//                        print("Old value changed from " + oldvalue);
+                        fail++;
+                    } else
+                        success++;
                 }
             }
         }
