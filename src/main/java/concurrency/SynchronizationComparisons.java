@@ -22,7 +22,7 @@ abstract class Accumulator {
     public static long cycles = 50000L;
     public static ExecutorService exec =
             Executors.newFixedThreadPool(N * 2);
-    protected static int[] preLoaded = new int[SIZE];
+    protected static int[] preLoaded = new int[SIZE + 4];
     private static CyclicBarrier barrier =
             new CyclicBarrier(N * 2 + 1);
 
