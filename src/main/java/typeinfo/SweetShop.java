@@ -28,7 +28,9 @@ public class SweetShop {
         new Candy();
         print("After creating Candy");
         try {
-            Class.forName("Gum");
+            Class.forName("typeinfo.Gum");
+            // 证明类加载只发生一次
+            Class.forName("typeinfo.Gum");
         } catch (ClassNotFoundException e) {
             print("Couldn't find Gum");
         }
