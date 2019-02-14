@@ -6,7 +6,8 @@ import java.util.Random;
 class Initable {
     static final int staticFinal = 47;
     static final int staticFinal2 =
-            ClassInitialization.rand.nextInt(1000);
+            new Integer(1);
+//            ClassInitialization.rand.nextInt(1000);
 
     static {
         System.out.println("Initializing Initable");
@@ -41,7 +42,7 @@ public class ClassInitialization {
         System.out.println(Initable.staticFinal2);
         // Does trigger initialization:
         System.out.println(Initable2.staticNonFinal);
-        Class initable3 = Class.forName("Initable3");
+        Class initable3 = Class.forName("typeinfo.Initable3");
         System.out.println("After creating Initable3 ref");
         System.out.println(Initable3.staticNonFinal);
     }
