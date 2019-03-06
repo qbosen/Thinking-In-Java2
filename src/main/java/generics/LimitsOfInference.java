@@ -1,6 +1,7 @@
 //: generics/LimitsOfInference.java
 package generics; /* Added by Eclipse.py */
 
+import net.mindview.util.New;
 import typeinfo.pets.Person;
 import typeinfo.pets.Pet;
 
@@ -13,6 +14,6 @@ public class LimitsOfInference {
     }
 
     public static void main(String[] args) {
-        // f(New.map()); // Does not compile
+        f(New.map()); // Does not compile
     }
 } ///:~

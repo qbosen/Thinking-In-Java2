@@ -1,6 +1,7 @@
-//: typeinfo/InnerImplementation.java
+package typeinfo;//: typeinfo/InnerImplementation.java
 // Private inner classes can't hide from reflection.
 
+import typeinfo.HiddenImplementation;
 import typeinfo.interfacea.A;
 
 import static net.mindview.util.Print.print;
