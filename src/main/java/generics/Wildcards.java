@@ -5,7 +5,7 @@ package generics; /* Added by Eclipse.py */
 public class Wildcards {
     // Raw argument:
     static void rawArgs(Holder holder, Object arg) {
-        // holder.set(arg); // Warning:
+        holder.set(arg); // Warning:
         //   Unchecked call to set(T) as a
         //   member of the raw type Holder
         // holder.set(new Wildcards()); // Same warning

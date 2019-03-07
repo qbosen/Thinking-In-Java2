@@ -59,9 +59,11 @@ class CanineHero<POWER extends SuperHearing & SuperSmell>
 
 class SuperHearSmell implements SuperHearing, SuperSmell {
     public void hearSubtleNoises() {
+        System.out.println("hear:" + this);
     }
 
     public void trackBySmell() {
+        System.out.println("smell:" + this);
     }
 }
 
@@ -73,13 +75,11 @@ class DogBoy extends CanineHero<SuperHearSmell> {
 
 public class EpicBattle {
     // Bounds in generic methods:
-    static <POWER extends SuperHearing>
-    void useSuperHearing(SuperHero<POWER> hero) {
+    static <POWER extends SuperHearing> void useSuperHearing(SuperHero<POWER> hero) {
         hero.getPower().hearSubtleNoises();
     }
 
-    static <POWER extends SuperHearing & SuperSmell>
-    void superFind(SuperHero<POWER> hero) {
+    static <POWER extends SuperHearing & SuperSmell> void superFind(SuperHero<POWER> hero) {
         hero.getPower().hearSubtleNoises();
         hero.getPower().trackBySmell();
     }

@@ -4,6 +4,9 @@ package typeinfo; /* Added by Eclipse.py */
 // even if the methods are defined in the base class.
 // {Args: ShowMethods}
 
+import custom.Utils;
+import org.junit.Test;
+
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.util.regex.Pattern;
@@ -17,6 +20,7 @@ public class ShowMethods {
                     "To show all methods in class or:\n" +
                     "ShowMethods qualified.class.name word\n" +
                     "To search for methods involving 'word'";
+    // remove all package info
     private static Pattern p = Pattern.compile("\\w+\\.");
 
     public static void main(String[] args) {
@@ -53,6 +57,13 @@ public class ShowMethods {
         } catch (ClassNotFoundException e) {
             print("No such class: " + e);
         }
+    }
+
+    @Test
+    public void test() {
+        main(Utils.toArr("typeinfo.ShowMethods"));
+        System.out.println();
+        main(Utils.toArr("typeinfo.ShowMethods", "wait"));
     }
 } /* Output:
 public static void main(String[])

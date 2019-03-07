@@ -24,7 +24,7 @@ public class UnboundedWildcards2 {
     public static void main(String[] args) {
         assign1(new HashMap());
         assign2(new HashMap());
-        // assign3(new HashMap()); // Warning:
+        assign3(new HashMap()); // Warning:
         // Unchecked conversion. Found: HashMap
         // Required: Map<String,?>
         assign1(new HashMap<String, Integer>());

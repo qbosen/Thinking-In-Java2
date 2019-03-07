@@ -1,6 +1,8 @@
 //: generics/GenericArray.java
 package generics; /* Added by Eclipse.py */
 
+import java.lang.reflect.Array;
+
 public class GenericArray<T> {
     private T[] array;
 
@@ -13,7 +15,11 @@ public class GenericArray<T> {
         GenericArray<Integer> gai =
                 new GenericArray<Integer>(10);
         // This causes a ClassCastException:
-        //! Integer[] ia = gai.rep();
+        try {
+            Integer[] ia = gai.rep();
+        } catch (ClassCastException e) {
+            e.printStackTrace();
+        }
         // This is OK:
         Object[] oa = gai.rep();
     }

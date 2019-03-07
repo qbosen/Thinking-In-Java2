@@ -14,6 +14,7 @@ public class LimitsOfInference {
     }
 
     public static void main(String[] args) {
+        // jdk8 类型推断增强 可以编译
         f(New.map()); // Does not compile
     }
 } ///:~

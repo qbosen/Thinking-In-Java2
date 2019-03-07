@@ -27,8 +27,7 @@ class Colored<T extends HasColor> {
 }
 
 // This won't work -- class must be first, then interfaces:
-// class ColoredDimension<T extends HasColor & Dimension> {
-
+// class ColoredDimension<T extends HasColor & Dimension> {}
 class Dimension {
     public int x, y, z;
 }
